@@ -279,6 +279,7 @@
     // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
     // In this case the associated code "saves " the data to the table-data.js file or waitinglist-data.js file
 
+    jQuery.ajaxSettings.traditional = true;
     $("#submit").on("click", function(event) {
         event.preventDefault();
 
@@ -287,19 +288,22 @@
             name: $("#name").val().trim(),
             photo: $("#photo").val().trim(),
             scores: [
-                        $("#q1").val(),
-                        $("#q2").val(),
-                        $("#q3").val(),
-                        $("#q4").val(),
-                        $("#q5").val(),
-                        $("#q6").val(),
-                        $("#q7").val(),
-                        $("#q8").val(),
-                        $("#q9").val(),
-                        $("#q10").val()
-            ]
+                $("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q8").val(),
+                $("#q9").val(),
+                $("#q10").val()
+
+                ]
         };
-        console.log(newFriend);
+
+
+
 
         $.post("/api/friends", newFriend,
             function(data) {

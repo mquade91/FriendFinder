@@ -12,12 +12,21 @@ module.exports = function(app) {
 
     //POST to make a new friendData
     app.post("/api/friends", function(req, res) {
-        friendData.push(req.body);
+
+        var parseBody = req.body;
+        for (var i = 0; i < parseBody.scores.length; i++) {
+            parseBody.scores[i] = parseInt(parseBody.scores[i]);
+        }
+        //logic for finding best friend return best match loop through friends then through scores
+        //function absolute value!
+        friendData.push(parseBody);
         res.json(true);
     });
 
     //GETs all the friendData scores
     app.get("/api/friends/scores", function(req, res) {
+
+        //for loop to GET all the scores form each friend
         for (var i = 0; i < friendData.length; i++) {
             res.json(friendData[i].scores);
         }
