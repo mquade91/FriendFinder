@@ -21,6 +21,10 @@ module.exports = function(app) {
         //function absolute value!
         friendData.push(parseBody);
         res.json(true);
+        for (let i = 0; i < friendData.length; i++) {
+            console.log(friendData[i].scores);
+        }
+
     });
 
     //GETs all the friendData scores
